@@ -10,7 +10,10 @@ node {
     currentBuild.result = "SUCCESS"
 
     try {
-        
+        stage("CHECKOUT")
+        {
+            checkout scm
+        }
 
         stage("clearing up Workspace") {
             def remoteBranches = bat(script: "git ls-remote --heads ${REPO_URL}", returnStdout: true).trim()
